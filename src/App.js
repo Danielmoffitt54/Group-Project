@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import './App.css';
 import Header from './Components/Header/Header';
+import Main from './Components/Main/Main';
 
 class App extends React.Component {
 
@@ -42,6 +42,7 @@ class App extends React.Component {
 
       <div className="App">
         <Header />
+        <Main />
       </div>
     );
   }

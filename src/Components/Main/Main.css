@@ -3,3 +3,42 @@
     padding: 2vh 5%;
     background-color: whitesmoke;
 }
+
+.Main-pages {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.Main-pageNav {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    background: linear-gradient( whitesmoke, silver);
+    border: 1px solid silver;
+    border-radius: 5px;
+}
+
+.Main-navBtn {
+    list-style: none;
+    padding: 10px 15px;
+    font-size: 20pt;
+    color: darkslategray;
+    background: transparent;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+.Main-navMid {
+    list-style: none;
+    padding: 10px 15px;
+    font-size: 20pt;
+    color: darkslategray;
+    background: transparent;
+    border-left: 1px solid silver;
+    border-right: 1px solid silver;
+}

@@ -1,0 +1,76 @@
+.Header {
+    margin-top: 80px;
+    background-color: whitesmoke;
+}
+
+.Header-main {
+    position: absolute;
+    top: 0;
+    width: 90%;
+    height: 80px;
+    padding: 0 5%;
+    display: grid;
+    grid-template-columns: 150px auto;
+    align-content: center;
+    border-bottom: 1px solid silver;
+    background-color: teal;
+}
+
+.Header-logo {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Header-nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.Header-navBtn {
+    margin-left: 10px;
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    color: darkslategrey;
+    font-weight: bold;
+}
+
+.Header-searchBar {
+    padding: 1vw 1vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.Header-searchText {
+    padding: 2vw 1vh;
+    font-size: 14pt;
+    border-radius: 5px;
+}
+
+.Header-searchBtn {
+    margin-left: 10px;
+    padding: 2vw 1vh;
+    font-size: 14pt;
+    border-radius: 5px;
+    background-color: whitesmoke;
+    font-weight: bold;
+    color: darkslategrey;
+}
+
+.Header-menu {
+    margin: 0;
+    padding: 0;
+}
+
+.Header-menuItem {
+    margin-top: -1px;
+    padding: 5vw 3vh;
+    list-style: none;
+    border-top: 1px solid silver;
+    border-bottom: 1px solid silver;
+}

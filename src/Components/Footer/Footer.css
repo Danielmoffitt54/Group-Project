@@ -1,0 +1,15 @@
+.Footer {
+    min-height: 200px;
+    background-color: teal;
+}
+
+.Footer-logo {
+    text-align: center;
+    text-decoration: none;
+    color: currentColor;
+}
+
+.Footer-logoLink {
+    text-decoration: none;
+    color: currentColor;
+}

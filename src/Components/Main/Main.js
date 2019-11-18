@@ -7,7 +7,7 @@ export default class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            animals: [],
+            animals: [ 'animal0', 'animal1', 'animal2', 'animal3', 'animal4', 'animal5', 'animal6', 'animal7', 'animal8', 'animal9'],
             page: 0,
         }
     }
@@ -47,9 +47,9 @@ export default class Main extends Component {
         })
     }
 
-    componentDidMount() {
-        this.getAdoptablePets();
-    }
+    // componentDidMount() {
+    //     this.getAdoptablePets();
+    // }
 
 
     render() {

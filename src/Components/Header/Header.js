@@ -29,7 +29,7 @@ export default class Header extends Component {
                     </div>
                 </div>
                 <form className='Header-searchBar' style={{display: showMenu ? 'flex': 'none'}}>
-                    <input className='Header-searchText' placeholder='Search here'></input>
+                    <input className='Header-searchBox' placeholder='Search here'></input>
                     <button className='Header-searchBtn'>Search</button>
                 </form>
                 <ul className='Header-menu' style={{display: showMenu ? 'block': 'none'}}>

@@ -1,6 +1,7 @@
 .Header {
     margin-top: 80px;
     background-color: whitesmoke;
+    border-bottom: 2px solid black;
 }
 
 .Header-main {
@@ -12,7 +13,7 @@
     display: grid;
     grid-template-columns: 150px auto;
     align-content: center;
-    border-bottom: 1px solid silver;
+    border-bottom: 2px solid black;
     background-color: teal;
 }
 
@@ -40,19 +41,21 @@
 }
 
 .Header-searchBar {
-    padding: 1vw 1vh;
+    padding: 2vw 1vh;
     display: flex;
-    flex-direction: row;
     justify-content: flex-end;
 }
 
-.Header-searchText {
+.Header-searchBox {
+    width: 100%;
     padding: 2vw 1vh;
     font-size: 14pt;
     border-radius: 5px;
+    overflow: hidden;
 }
 
 .Header-searchBtn {
+    float: right;
     margin-left: 10px;
     padding: 2vw 1vh;
     font-size: 14pt;
@@ -72,5 +75,4 @@
     padding: 5vw 3vh;
     list-style: none;
     border-top: 1px solid silver;
-    border-bottom: 1px solid silver;
 }

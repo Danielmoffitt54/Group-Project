@@ -1,6 +1,7 @@
 .Footer {
     min-height: 200px;
     background-color: teal;
+    border-top: 2px solid black;
 }
 
 .Footer-logo {

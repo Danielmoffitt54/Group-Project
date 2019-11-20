@@ -12,7 +12,8 @@ export default class Main extends Component {
         }
     }
 
-    getAdoptablePets = () => {
+
+    getAdoptablePets = (extension) => {
 
         const self = this;
   
@@ -30,7 +31,7 @@ export default class Main extends Component {
           axios({
             // We can configure everything we need to about the http request in here
             method: 'GET',
-            url: 'https://api.petfinder.com/v2/animals',
+            url: `https://api.petfinder.com${extension}`,
             headers: { Authorization: `Bearer ${response.data.access_token}` }
             }).then(function (response) {
                 console.log(response);
@@ -48,7 +49,7 @@ export default class Main extends Component {
     }
 
     // componentDidMount() {
-    //     this.getAdoptablePets();
+    //     this.getAdoptablePets('/v2/animals');
     // }
 
 

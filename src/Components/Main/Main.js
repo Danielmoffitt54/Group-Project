@@ -80,7 +80,7 @@ export default class Main extends Component {
             console.log(error);
         })
     }
-
+    
     componentDidMount() {
         this.getPets('/v2/animals');
     }

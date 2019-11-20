@@ -32,6 +32,11 @@ export default class Header extends Component {
                     <input className='Header-searchBox' placeholder='Search here'></input>
                     <button className='Header-searchBtn'>Search</button>
                 </form>
+                <select className="category-select" name="categories" onChange={this.handleChange}>
+                    {data.map(info => (
+                        <option value={info.role}>{info.role}</option>
+                    ))}
+                </select> 
                 <ul className='Header-menu' style={{display: showMenu ? 'block': 'none'}}>
                     <li className='Header-menuItem'><a href='#'>Favorited</a></li> {/* Save an animal by id to save viewed */}
                     <li className='Header-menuItem'>Powered by <a href='https://www.petfinder.com/developers/' target='_blank'>Petfinder</a></li>

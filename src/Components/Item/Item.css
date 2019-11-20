@@ -36,3 +36,10 @@
     border: 1px solid silver;
     border-radius: 5px;
 }
+
+@media only screen and (min-width: 560px) {
+    .Item {
+        width: 240px;
+        margin-left: 10px;
+    }
+}

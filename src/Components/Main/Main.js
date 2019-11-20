@@ -7,64 +7,95 @@ export default class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            animals: [ 'animal0', 'animal1', 'animal2', 'animal3', 'animal4', 'animal5', 'animal6', 'animal7', 'animal8', 'animal9'],
-            page: 0,
+            animals: [],
+            pagination: [],
+            prev: '',
+            next: ''
+        }
+        this.nextPage = this.nextPage.bind(this);
+        this.previousPage = this.previousPage.bind(this);
+    }
+
+    nextPage() {
+        const { pagination, next } = this.state;
+        if (pagination._links.next) {
+            this.getPets(next);
         }
     }
 
+    previousPage() {
+        const { pagination, prev } = this.state;
+        if (pagination._links.previous) {
+            this.getPets(prev);
+        }
+    }
 
-    getAdoptablePets = (extension) => {
+    getPets = (extension) => {
 
         const self = this;
-  
-      axios({
+        console.log(extension);
+
+        axios({
         // We can configure everything we need to about the http request in here
         method: 'POST',
         url: 'https://api.petfinder.com/v2/oauth2/token',
         data: {
-          grant_type: 'client_credentials',
-          client_id: 'uTs1oyTZOCH08ubX11sIAPPDN9XFYRoJ0hYlML5fofyMt0RuiT',
-          client_secret: '0ijkQV9UXKMTja7iOScbNXsG5fxfU8GPWEDaLYgj'
+        grant_type: 'client_credentials',
+        client_id: 'uTs1oyTZOCH08ubX11sIAPPDN9XFYRoJ0hYlML5fofyMt0RuiT',
+        client_secret: '0ijkQV9UXKMTja7iOScbNXsG5fxfU8GPWEDaLYgj'
         }
         }).then(function (response) {
-          
-          axios({
+            
+            axios({
             // We can configure everything we need to about the http request in here
             method: 'GET',
             url: `https://api.petfinder.com${extension}`,
             headers: { Authorization: `Bearer ${response.data.access_token}` }
             }).then(function (response) {
+
                 console.log(response);
+
                 self.setState({
                     animals: response.data.animals,
-                    page: response.data.pagination.current_page
+                    pagination: response.data.pagination
                 });
+
+                if (response.data.pagination._links.previous) {
+                    self.setState({
+                        prev: response.data.pagination._links.previous.href
+                    });
+                }
+
+                if (response.data.pagination._links.next) {
+                    self.setState({
+                        next: response.data.pagination._links.next.href
+                    });
+                }
+
             }).catch(function (error) {
                 console.log(error);
             });
-            
+                
         }).catch(function (error) {
             console.log(error);
         })
     }
-
-    // componentDidMount() {
-    //     this.getAdoptablePets('/v2/animals');
-    // }
-
+    
+    componentDidMount() {
+        this.getPets('/v2/animals');
+    }
 
     render() {
-        const { page, animals } = this.state;
+        const { animals, pagination } = this.state;
 
         return(
             <main className='Main'>
-                {/* <Filters /> */}
                 <List array={animals}/>
                 <div className='Main-pages'>
                     <div className='Main-pageNav'>
-                        <button className='Main-navBtn'>Prev</button>
-                        <div className='Main-navMid'>{page}</div>
-                        <button className='Main-navBtn'>Next</button>
+                        <button className='Main-navBtn' onClick={this.previousPage}>Prev</button>
+                        <div className='Main-navMid'>{pagination.current_page}</div>
+                        <button className='Main-navBtn' onClick={this.nextPage}>Next</button>
                     </div>
                 </div>
             </main>

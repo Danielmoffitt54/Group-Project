@@ -11,10 +11,36 @@
 
 .Pet-aboutMe {
     border: 1px solid black;
-    Margin-Top: 10px;
-
-
+    margin-top: 10px; 
+    border-radius: 5px;
 }
-.Pet-Characteristics {
-    Margin: 20px, 0, 15px, 5px;
+.Pet-category {
+    margin: 20px 0 15px 5px;
 }
+
+ .Pet-Text {
+ margin: 10px;
+ }
+ .Pet-title {
+     margin: 10px 5px;
+    
+ }
+ .Pet-headerBtn {
+    font-size: 18pt;
+    border: 1px solid silver;
+    border-radius: 5px;
+    font-weight: bold;
+    background-color: teal;
+    color: whitesmoke;
+ }
+
+ .Pet-returnBtn {
+     font-size: 18pt;
+     border: 1px solid silver;
+     border-radius: 5px;
+     font-weight: bold;
+     background-color: teal;
+     color: whitesmoke;
+ }
+
+ 

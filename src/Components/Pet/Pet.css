@@ -1,0 +1,20 @@
+.Pet-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Pet-image {
+    height: 50vh;
+    width: 100%;
+}
+
+.Pet-aboutMe {
+    border: 1px solid black;
+    Margin-Top: 10px;
+
+
+}
+.Pet-Characteristics {
+    Margin: 20px, 0, 15px, 5px;
+}

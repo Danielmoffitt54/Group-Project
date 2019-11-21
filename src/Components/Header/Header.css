@@ -41,14 +41,14 @@
 }
 
 .Header-searchBar {
-    padding: 2vw 1vh;
+    padding: 5px;
     display: flex;
     justify-content: flex-end;
 }
 
 .Header-searchBox {
     width: 100%;
-    padding: 2vw 1vh;
+    padding: 5px;
     font-size: 14pt;
     border-radius: 5px;
     overflow: hidden;
@@ -57,7 +57,7 @@
 .Header-searchBtn {
     float: right;
     margin-left: 10px;
-    padding: 2vw 1vh;
+    padding: 5px;
     font-size: 14pt;
     border-radius: 5px;
     background-color: whitesmoke;
@@ -72,7 +72,19 @@
 
 .Header-menuItem {
     margin-top: -1px;
-    padding: 5vw 3vh;
+    padding: 15px;
     list-style: none;
     border-top: 1px solid silver;
+}
+
+.Submit{
+    font-size: 12px;
+}
+
+.Types{
+    font-size: 20px;
+}
+
+.Header-select {
+    font-size: 20px;
 }

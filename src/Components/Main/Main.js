@@ -53,16 +53,18 @@ export default class Main extends Component {
             axios({
             // We can configure everything we need to about the http request in here
             method: 'GET',
-            url: `https://api.petfinder.com${extension}`,
+            url: `https://api.petfinder.com/v2/types/`,
             headers: { Authorization: `Bearer ${response.data.access_token}` }
             }).then(function (response) {
 
                 console.log(response);
 
-                self.setState({
-                    animals: response.data.animals,
-                    pagination: response.data.pagination
-                });
+                if (response.data.animals) {
+                    self.setState({
+                        animals: response.data.animals,
+                        pagination: response.data.pagination
+                    });
+                }
 
                 if (response.data.pagination._links.previous) {
                     self.setState({

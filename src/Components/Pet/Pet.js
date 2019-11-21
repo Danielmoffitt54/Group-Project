@@ -2,11 +2,15 @@ import React, { Component } from 'react'
 import './Pet.css';
 
 export default class Pet extends Component {
+
     render(){
+        const { array, onClick } = this.props;
+        console.log(array);
         return(
             <div className='Pet'>
+                <button className='Pet-returnBtn' onClick={() => onClick('List')}>Back</button>
                 <div className='Pet-header'>
-                    <h1 className='Pet-name'>Name</h1>
+                    <h1 className='Pet-name'>{array.name}</h1>
                     <button className='Pet-headerButton'>Heart</button>
                     <button className='Pet-headerButton'>Adopt</button>
                 </div>

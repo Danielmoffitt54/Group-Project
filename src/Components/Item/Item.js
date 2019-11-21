@@ -12,10 +12,6 @@ export default class Item extends Component {
         }
     }
 
-    buttonHandler() {
-        console.log('hi');
-    }
-
     renderBackground() {
         const { animal } = this.props;
         const responseCheck = animal.photos.length !== 0;
@@ -27,7 +23,7 @@ export default class Item extends Component {
     }
 
     render() {
-        const { animal } = this.props;
+        const { animal, onClick } = this.props;
 
         return(
             <div className='Item' style={{background: `linear-gradient(to right, black, transparent) ,url(${this.renderBackground()})`}}>
@@ -36,7 +32,7 @@ export default class Item extends Component {
                 <h4 className='Item-subHeader'>{this.renderSecondary(animal)}</h4>
                 <div className='Item-footer'>
                     <h4>{animal.contact.address.city + ', ' + animal.contact.address.state}</h4>
-                    <button className='Item-footerBtn' onClick={this.buttonHandler}>Learn more</button>
+                    <button className='Item-footerBtn' onClick={() => onClick( 'Pet', animal)}>Learn more</button>
                 </div>
             </div>
         );

@@ -2,11 +2,14 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './Main.css';
 import List from '../List/List';
+import Pet from '../Pet/Pet';
 
 export default class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            component: 'List',
+            pet: [],
             animals: [],
             pagination: [],
             prev: '',
@@ -14,6 +17,7 @@ export default class Main extends Component {
         }
         this.nextPage = this.nextPage.bind(this);
         this.previousPage = this.previousPage.bind(this);
+        this.clickHandler = this.clickHandler.bind(this);
     }
 
     nextPage() {
@@ -80,25 +84,43 @@ export default class Main extends Component {
             console.log(error);
         })
     }
-    
+
+    renderComponent() {
+        const { component, pet, animals } = this.state;
+
+        if (component === 'Pet') {
+            return <Pet array={pet} onClick={this.clickHandler} />
+        } else {
+            return <List array={animals} onClick={this.clickHandler} />
+        }
+    }
+
+    clickHandler( clicked, array) {
+        this.setState({
+            component: clicked,
+            pet: array
+        });
+        this.renderComponent();
+    }
+
     componentDidMount() {
         this.getPets('/v2/animals');
     }
 
     render() {
-        const { animals, pagination } = this.state;
+        const { component, pagination } = this.state;
 
-        return(
-            <main className='Main'>
-                <List array={animals}/>
-                <div className='Main-pages'>
-                    <div className='Main-pageNav'>
-                        <button className='Main-navBtn' onClick={this.previousPage}>Prev</button>
-                        <div className='Main-navMid'>{pagination.current_page}</div>
-                        <button className='Main-navBtn' onClick={this.nextPage}>Next</button>
+        return (
+                <main className='Main'>
+                    {this.renderComponent()}
+                    <div className='Main-pages' style={{display: component === 'List' ? 'flex' : 'none'}}>
+                        <div className='Main-pageNav'>
+                            <button className='Main-navBtn' onClick={this.previousPage}>Prev</button>
+                            <div className='Main-navMid'>{pagination.current_page}</div>
+                            <button className='Main-navBtn' onClick={this.nextPage}>Next</button>
+                        </div>
                     </div>
-                </div>
-            </main>
-        );
+                </main>
+            );
     }
 }

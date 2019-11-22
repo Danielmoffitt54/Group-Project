@@ -57,6 +57,10 @@ export default class Pet extends Component {
         return <p className='Pet-Text'>{value ? trueReturn : falseReturn}</p>
     }
 
+    capitalize(str){
+        return str.charAt(0).toUpperCase() + str.slice(1);
+    }
+
     render(){
         const { array, onClick } = this.props;
 
@@ -71,7 +75,7 @@ export default class Pet extends Component {
                     </button>
                     <button className='Pet-headerBtn'>Adopt</button>
                 </div> 
-                <h1 className='Pet-name'>{array.name + ' - ' + array.status}</h1>
+                <h1 className='Pet-name'>{array.name + ' - ' + this.capitalize(array.status)}</h1>
                 <img 
                     className = 'Pet-image' 
                     src={array.photos.length === 0 ? '' : array.photos[0].full}
@@ -102,6 +106,8 @@ export default class Pet extends Component {
                     </div>
                     <div className='Pet-category'>
                         <h2 className = 'Pet-title' >Where am I?</h2>
+                        {this.renderText(array.contact.address.address1)}
+                        {this.renderText(array.contact.address.city + ', ' + array.contact.address.state + '  ' + array.contact.address.postcode)}
                         {this.renderText(array.contact.email)}
                         {this.renderText(array.contact.phone)}
                         {this.renderText(array.contact.address1)}

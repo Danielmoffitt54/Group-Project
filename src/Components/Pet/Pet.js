@@ -62,30 +62,38 @@ export default class Pet extends Component {
 
         return(
             <div className='Pet'>
-                
                 <div className='Pet-header'>
-                <button className='Pet-returnBtn' onClick={() => onClick('List')}>Back</button>
-                <button className='Pet-headerBtn'>Adopt</button>
+                    <button 
+                        className='Pet-headerBtn' 
+                        onClick={() => onClick('List')}
+                    >
+                        Back
+                    </button>
+                    <button className='Pet-headerBtn'>Adopt</button>
                 </div> 
-                <h1 className='Pet-name'>{array.name}</h1>
-                <img className = 'Pet-image' src={array.photos.length === 0 ? '' : array.photos[0].medium}></img>
+                <h1 className='Pet-name'>{array.name + ' - ' + array.status}</h1>
+                <img 
+                    className = 'Pet-image' 
+                    src={array.photos.length === 0 ? '' : array.photos[0].full}
+                    alt={`Photo of ${array.name}`}
+                ></img>
                 <div className='Pet-aboutMe'>
-                    <h1 className = 'Pet-title'>About Me</h1>
+                    <h1 className='Pet-title'>AboutMe:</h1>
                     {this.renderText(array.description)}
                     <div className='Pet-category'>
                         {this.renderText(array.size)}
-                        {this.renderText(array.age + ' / ' + array.gender)}
+                        {this.renderText(array.age + ' ' + array.gender)}
                         {this.renderText(array.coat)}
                         {this.renderText(array.colors.primary)}
                     </div>
                     <div className='Pet-category'>
-                        <h1 className = 'Pet-title'>Environment</h1>
+                        <h2 className = 'Pet-title'>What am I like?</h2>
                         {this.renderEnvironment('Children', array.environment.children)}
                         {this.renderEnvironment('Dogs', array.environment.dogs)}
                         {this.renderEnvironment('Cats', array.environment.cats)}
                     </div>
                     <div className='Pet-category'>
-                        <h1 className = 'Pet-title'>Attributes</h1>
+                        <h2 className = 'Pet-title'>What's my health history?</h2>
                         {this.renderHealth(1, array.attributes.spaded_neutered)}
                         {this.renderHealth(2, array.attributes.house_trained)}
                         {this.renderHealth(3, array.attributes.de_clawed)}
@@ -93,7 +101,7 @@ export default class Pet extends Component {
                         {this.renderHealth(5, array.attributes.shots_current)}
                     </div>
                     <div className='Pet-category'>
-                        <h1 className = 'Pet-title' >ContactMe</h1>
+                        <h2 className = 'Pet-title' >Where am I?</h2>
                         {this.renderText(array.contact.email)}
                         {this.renderText(array.contact.phone)}
                         {this.renderText(array.contact.address1)}

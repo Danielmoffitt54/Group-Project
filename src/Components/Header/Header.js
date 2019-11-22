@@ -19,86 +19,121 @@ export default class Header extends Component {
 
     render() {
         const { showMenu } = this.state;
+        const { searchHandler, filterHandler } = this.props;
 
         return(
-            <header className='Header'>
+            <header className='Header' id='header'>
                 <div className='Header-main'>
                     <h1 className='Header-logo'>AdoptMe</h1>
                     <div className='Header-nav'>
-                        <button className='Header-navBtn' onClick={this.renderMenu}>Menu</button>
+                        <button 
+                            className='Header-navBtn' 
+                            onClick={this.renderMenu}
+                        >
+                            Menu
+                        </button>
                     </div>
                 </div>
-                <form className='Header-searchBar' style={{display: showMenu ? 'flex': 'none'}}>
-                    <input className='Header-searchBox' placeholder='Search here'></input>
-                    <button className='Header-searchBtn'>Search</button>
-                </form>
-                {/* <select className="category-select" name="categories" onChange={this.handleChange}>
-                    {data.map(info => (
-                        <option value={info.role}>{info.role}</option>
-                    ))}
-                </select>  */}
-                <ul className='Header-menu' style={{display: showMenu ? 'block': 'none'}}>
-                    <li>
-                        <form>
-                            <label>
-                                Types:
-                                <select className='Header-select'>
-                                    <option value=''>Select</option>
-                                    <option value='Dog'>Dog</option>
-                                    <option value='Cat'>Cat</option>
-                                    <option value='Rabbit'>Rabbit</option>
-                                    <option value='Small and Furry'>Small and Furry</option>
-                                    <option value='Horse'>Horse</option>
-                                    <option value='Bird'>Bird</option>
-                                    <option value='Scales, Fins and Other'>Scales, Fins and Other</option>
-                                    <option value= 'Barnyard'>Barnyard</option>
-                                </select>
-                            </label>
-                            <label>
-                                Coats:
-                                <select className='Header-select'>
-                                    <option value= 'Select'> Select</option>
-                                    <option value='Hairless'>Hairless</option>
-                                    <option value= 'Short'>Short</option>
-                                    <option value= 'Medium'>Medium</option>
-                                    <option value= 'Long'>Long</option>
-                                    <option value='Wire'>Wire</option>
-                                    <option value='Curly'>Curly</option>
-                                </select>
-                            </label>
-                            <label>
-                                Color:
-                                <select className='Header-select'>
-                                    <option value='Select'>Select</option>
-                                    <option value='Apricot/Beige'>Apricot/Beige</option>
-                                    <option value='BiColor'>Bi Color</option>
-                                    <option value='Black'>Black</option>
-                                    <option value='Brindle'>Brindle</option>
-                                    <option value='Brown/Chocolate'>Brown/Chocolate</option>
-                                    <option value='Golden'>Golden</option>
-                                    <option value='Gray/ Blue/ Silver'>Gray/ Blue/ Silver</option>
-                                    <option value='Harlequin'>Harlequin</option>
-                                    <option value='Merle (Blue)'>Merle (Blue)</option>
-                                    <option value='Merle (Red)'>Merle (Red)</option>
-                                    <option value='Red/ Chestnut/ Orange'>Red/ Chestnut/ Orange</option>
-                                    <option value='Sable'>Sable</option>
-                                    <option value='Tricolor (Brown, Black, and White)'>Tricolor (Brown, Black, and White)</option>
-                                    <option value='White/Cream'>White/Cream</option>
-                                    <option value='Yellow/ Tan/ Blond/ Fawn'>Yellow/ Tan/ Blond/ Fawn</option>
-                                </select>
-                            </label>
-                            <label>
-                                Gender:
-                                <select className='Header-select'>
-                                    <option value='Select'>Select</option>
-                                    <option value='Male'>Male</option>
-                                    <option value='Female'>Female</option>
-                                </select>
-                            </label>
-                             <button className='Submit'>Submit</button>
+                <ul 
+                    className='Header-menu' 
+                    style={{display: showMenu ? 'block': 'none'}}
+                >
+                    <li className='Header-menuItem'>
+                        <form className='Header-searchForm'>
+                            <input 
+                                className='Header-searchName' 
+                                placeholder='Search by name'
+                                onChange={searchHandler}
+                            />
                         </form>
                     </li>
-                    <li className='Header-menuItem'>Powered by <a href='https://www.petfinder.com/developers/' target='_blank'>Petfinder</a></li>
+                    <li className='Header-menuItem'>
+                        <form 
+                            className='Header-filterForm'
+                            onChange={filterHandler}
+                        >
+                            <label className='Header-filterRow'>Filter (Limit 2 Categories):</label>
+                            <div className='Header-filterRow'>
+                                <label className='Header-filterLabel'>
+                                    Type:
+                                    <select 
+                                        id='type' 
+                                        className='Header-filterSelect'
+                                    >
+                                        <option value=''>Select</option>
+                                        <option value='dog'>Dog</option>
+                                        <option value='cat'>Cat</option>
+                                        <option value='rabbit'>Rabbit</option>
+                                        <option value='small-furry'>Small and Furry</option>
+                                        <option value='horse'>Horse</option>
+                                        <option value='bird'>Bird</option>
+                                        <option value='scales-fins-other'>Scales, Fins and Other</option>
+                                        <option value='barnyard'>Barnyard</option>
+                                    </select>
+                                </label>
+                                <label className='Header-filterLabel'>
+                                    Gender:
+                                    <select 
+                                        id='gender' 
+                                        className='Header-filterSelect'
+                                    >
+                                        <option value=''>Select</option>
+                                        <option value='male'>Male</option>
+                                        <option value='female'>Female</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <div className='Header-filterRow'>
+                                <label className='Header-filterLabel'>
+                                    Age:
+                                    <div className='Header-filterCheckbox'>
+                                        <label>
+                                            <input id='baby' type='checkbox' value='baby' />
+                                            Baby
+                                        </label>
+                                        <label>
+                                            <input id='young' type='checkbox' value='young' />
+                                            Young
+                                        </label>
+                                        <label>
+                                            <input id='adult' type='checkbox' value='adult' />
+                                            Adult
+                                        </label>
+                                        <label>
+                                            <input id='senior' type='checkbox' value='senior' />
+                                            Senior
+                                        </label>
+                                    </div>
+                                </label>
+                                <label className='Header-filterLabel'>
+                                    Size:
+                                    <div 
+                                        id='size' 
+                                        className='Header-filterCheckbox'
+                                    >
+                                        <label>
+                                            <input id='small' type='checkbox' value='small' />
+                                            Small
+                                        </label>
+                                        <label>
+                                            <input id='medium' type='checkbox' value='medium' />
+                                            Medium
+                                        </label>
+                                        <label>
+                                            <input id='large' type='checkbox' value='large' />
+                                            Large
+                                        </label>
+                                        <label>
+                                            <input id='xlarge' type='checkbox' value='xlarge' />
+                                            Extra Large
+                                        </label>
+                                    </div>
+                                </label>
+                            </div>
+                        </form>
+                    </li>
+                    <li className='Header-menuItem'>Powered by <a href='https://www.petfinder.com/developers/' target='_blank' rel='noopener noreferrer'>Petfinder</a></li>
+                    <li className='Header-menuItem'>Created by: Scott Hurt, Jacob Richardson, and Daniel Moffitt</li>
                 </ul>
             </header>
         );

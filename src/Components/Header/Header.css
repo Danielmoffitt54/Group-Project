@@ -40,31 +40,6 @@
     font-weight: bold;
 }
 
-.Header-searchBar {
-    padding: 5px;
-    display: flex;
-    justify-content: flex-end;
-}
-
-.Header-searchBox {
-    width: 100%;
-    padding: 5px;
-    font-size: 14pt;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-.Header-searchBtn {
-    float: right;
-    margin-left: 10px;
-    padding: 5px;
-    font-size: 14pt;
-    border-radius: 5px;
-    background-color: whitesmoke;
-    font-weight: bold;
-    color: darkslategrey;
-}
-
 .Header-menu {
     margin: 0;
     padding: 0;
@@ -72,19 +47,41 @@
 
 .Header-menuItem {
     margin-top: -1px;
-    padding: 15px;
+    padding: 10px;
     list-style: none;
     border-top: 1px solid silver;
 }
 
-.Submit{
-    font-size: 12px;
+.Header-searchForm {
+    display: flex;
 }
 
-.Types{
-    font-size: 20px;
+.Header-searchName {
+    width: 100%;
+    padding: 5px;
+    font-size: 14pt;
+    border-radius: 5px;
 }
 
-.Header-select {
-    font-size: 20px;
+.Header-filterRow {
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.Header-filterSelect {
+    display: block;
+}
+
+.Header-filterLabel {
+    width: 100%;
+}
+
+.Header-filterCheckbox {
+    display: flex;
+    flex-direction: column;
+}
+
+.Header-filterCheckbox label {
+    margin-left: 5px;
 }

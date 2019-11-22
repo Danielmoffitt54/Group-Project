@@ -35,7 +35,7 @@ export default class Pet extends Component {
                     return <p className='Pet-Text'>{value ? "I'm Neutered" : "I'm not Neutered"}</p>
                 } else if (array.gender === 'Female') {
                     return <p className ='Pet-Text'>{value ? "I'm Spaded" : "I'm not Spaded"}</p>
-                }
+                } break;
             case 2:
                 trueReturn = "I'm house trained";
                 falseReturn = "I'm not house trained";
@@ -48,11 +48,9 @@ export default class Pet extends Component {
                 trueReturn = "I require special needs";
                 falseReturn = "I don't require special needs";
                 break;
-            case 5:
+            default:
                 trueReturn = "My shots are up to date";
                 falseReturn = "My shots are not up to date";
-                break;
-
         }
         return <p className='Pet-Text'>{value ? trueReturn : falseReturn}</p>
     }
@@ -79,7 +77,7 @@ export default class Pet extends Component {
                 <img 
                     className = 'Pet-image' 
                     src={array.photos.length === 0 ? '' : array.photos[0].full}
-                    alt={`Photo of ${array.name}`}
+                    alt={`This is ${array.name}`}
                 ></img>
                 <div className='Pet-aboutMe'>
                     <h1 className='Pet-title'>AboutMe:</h1>

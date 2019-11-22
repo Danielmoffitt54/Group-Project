@@ -6,7 +6,7 @@ export default class Footer extends Component {
         return(
             <footer className='Footer'>
                 <h1 className='Footer-logo'>
-                    <a className='Footer-logoLink' href='#'>AdoptMe</a>
+                    <a className='Footer-logoLink' href='#header'>AdoptMe</a>
                 </h1> 
                 {/* ^ Link to return to top */}
             </footer>

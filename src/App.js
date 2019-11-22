@@ -5,17 +5,141 @@ import Main from './Components/Main/Main';
 import Footer from './Components/Footer/Footer';
 
 class App extends React.Component {
+
+
   constructor(props) {
     super(props);
     this.state = {
+      name: '',
       animals: [],
       pagination: [],
       next: '',
       prev: ''
     }
+    this.searchHandler = this.searchHandler.bind(this);
+    this.filterHandler = this.filterHandler.bind(this);
     this.nextPage = this.nextPage.bind(this);
     this.previousPage = this.previousPage.bind(this);
   }
+
+  searchHandler(e) {
+    if (e.target.value.length > 2) {
+      this.getPets('?name=' + e.target.value);
+    }
+  }
+
+  filterHandler() {
+    let type = document.getElementById('type').value, 
+      gender = document.getElementById('gender').value,
+      typeExt = type !== '' ? 'type=' + type : null,
+      genderExt = gender !== '' ?'gender=' + gender : null,
+      ageExt = this.ageExtension(),
+      sizeExt = this.sizeExtension(),
+      extension = '';
+
+    if (typeExt === null && genderExt === null && ageExt === null && sizeExt === null) {
+      return console.log('return');
+    }
+
+    if (typeExt !== null) {
+      extension += typeExt;
+    }
+    if (genderExt !== null) {
+      if (typeExt !== null) {
+        extension += '&'
+      }
+      extension += genderExt;
+    }
+    if (ageExt !== null) {
+      if (typeExt !== null || genderExt !== null) {
+        extension += '&'
+      } 
+      extension += ageExt;
+    }
+    if (sizeExt !== null) {
+      if (typeExt !== null || genderExt !== null || ageExt !== null) {
+        extension += '&'
+      }
+      extension += sizeExt;
+    }
+    this.getPets('?' + extension);
+  }
+  
+  ageExtension() {
+    let baby = document.getElementById('baby').checked,
+      young = document.getElementById('young').checked,
+      adult = document.getElementById('adult').checked,
+      senior = document.getElementById('senior').checked,
+      extension = '';
+
+    if (!baby && !young && !adult && !senior) {
+      return null
+    }
+
+    if (baby) {
+      extension += 'baby';
+    }
+
+    if (young) {
+      if (baby) {
+        extension += ','
+      }
+      extension += 'young';
+    }
+
+    if (adult) {
+      if (baby || young) {
+        extension += ','
+      } 
+      extension += 'adult';
+    }
+
+    if (senior) {
+      if (baby || young || adult) {
+        extension += ','
+      }
+      extension += 'senior';
+    }
+    return 'size=' + extension;
+  }
+
+  sizeExtension() {
+    let small = document.getElementById('small').checked,
+      medium = document.getElementById('medium').checked,
+      large = document.getElementById('large').checked,
+      xLarge = document.getElementById('xlarge').checked,
+      extension = '';
+
+      if (!small && !medium && !large && !xLarge) {
+        return null
+      }
+
+      if (small) {
+        extension += 'small';
+      }
+
+      if (medium) {
+        if (small) {
+          extension += ','
+        }
+        extension += 'medium';
+      }
+
+      if (large) {
+        if (small || medium) {
+          extension += ','
+        } 
+        extension += 'large';
+      }
+
+      if (xLarge) {
+        if (small || medium || large) {
+          extension += ','
+        }
+        extension += 'xlarge';
+      }
+      return 'size=' + extension;
+    }
 
   getPets = (extension) => {
 
@@ -28,15 +152,15 @@ class App extends React.Component {
     url: 'https://api.petfinder.com/v2/oauth2/token',
     data: {
     grant_type: 'client_credentials',
-    client_id: 'uTs1oyTZOCH08ubX11sIAPPDN9XFYRoJ0hYlML5fofyMt0RuiT',
-    client_secret: '0ijkQV9UXKMTja7iOScbNXsG5fxfU8GPWEDaLYgj'
+    client_id: 'SITGG4TS6lN6jsHWLK34FYv1kQGhQdLo9MItYAfDueWJJhmJNM',
+    client_secret: 'Q4xsuuiTRhkVcIstacNfzs1jdcfseOog4ljvlehD'
     }
     }).then(function (response) {
           
       axios({
       // We can configure everything we need to about the http request in here
       method: 'GET',
-      url: `https://api.petfinder.com${extension}`,
+      url: `https://api.petfinder.com/v2/animals${extension}`,
       headers: { Authorization: `Bearer ${response.data.access_token}` }
       }).then(function (response) {
 
@@ -70,10 +194,6 @@ class App extends React.Component {
     })
   }
 
-  componentDidMount() {
-    this.getPets('/v2/animals');
-  }
-
   nextPage() {
 
     const { pagination, next } = this.state;
@@ -92,13 +212,20 @@ class App extends React.Component {
     }
   }
 
+  componentDidMount() {
+    this.getPets('')
+  }
+
   render() {
 
     const { animals, pagination } = this.state;
 
     return (
       <div className="App">
-        <Header />
+        <Header 
+          searchHandler={this.searchHandler}
+          filterHandler={this.filterHandler}
+        />
         <Main 
           animals={animals} 
           pagination={pagination} 

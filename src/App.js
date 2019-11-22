@@ -100,7 +100,7 @@ class App extends React.Component {
       }
       extension += 'senior';
     }
-    return 'size=' + extension;
+    return 'age=' + extension;
   }
 
   sizeExtension() {
